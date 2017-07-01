@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
 from math import sqrt
-
-a = 197
-b = 251
+from decimal import *
+from datetime import datetime
 
 def isqrt(n):
     x = n
@@ -13,29 +12,27 @@ def isqrt(n):
         y = (x + n // x) // 2
     return x
 
+def getfactorization(bignumber):
+    print "Factorizing %d ..." % bignumber
+    f = 0
+    while f < isqrt(4 * bignumber):
+        if f % 100000 == 0:
+             print "F: %d" % f
+             print datetime.now()
 
-c = a * b
+        f = f + 2
+        aplusb = Decimal(4 * bignumber + f * f).sqrt()
+        #print aplusb
+        #if f * f + 4 * bignumber == aplusb * aplusb:
+        if aplusb == int(aplusb):
+             #print "YAY %d" % f
+             #print "APLUSB %d" % aplusb
+             print "A: %d B: %d" % ((aplusb - f) / 2, (aplusb + f) / 2)
+             break
 
 
-e = 4 * int(isqrt(4 * c) / 2)
+getfactorization(197 * 251)
+getfactorization(15331738237 * 15331750531)
+getfactorization(25331757331 * 25331757413)
+getfactorization(15331750531 * 25331757413)
 
-print "E: %d" % e
-print "C: %d" % c
-
-v = e * e
-d = v - 4 * c
-sd = isqrt(d)
-if d == sd * sd:
-    print "done: %d" % d
-else:
-    print "not done %d" % d
-
-f = 0
-while f< 2000:
-    f = f + 2
-    aplusb = sqrt(4 * c + f * f) 
-    #if f * f + 4 * c == aplusb * aplusb:
-    if aplusb == int(aplusb):
-         print "YAY %d" % f
-         print "APLUSB %d" % aplusb
-         print "A: %d B: %d" % ((aplusb - f) / 2, (aplusb + f) / 2)
