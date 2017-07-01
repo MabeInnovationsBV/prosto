@@ -15,7 +15,8 @@ def isqrt(n):
 def getfactorization(bignumber):
     print "Factorizing %d ..." % bignumber
     f = 0
-    while f < isqrt(4 * bignumber):
+    maximumlimit = isqrt(4 * bignumber)
+    while f < maximumlimit:
         if f % 100000 == 0:
              print "F: %d" % f
              print datetime.now()
